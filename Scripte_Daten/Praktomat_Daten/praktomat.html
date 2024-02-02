@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<script src="/Scripte_Daten/libs/ccm/ccm_27_4_0.js"></script>
+<body>
+  <div id="user"></div>
+  <script>
+    (async () => {
+      const user = await ccm.start(
+        "https://ccmjs.github.io/akless-components/user/ccm.user.js", //Lokale Beziehungen
+        {
+          realm: "hbrsinfkaul",
+          root: document.body.querySelector("#user"),
+          logged_in: true,
+        }
+      );
+      const json = await fetch("dataFiltered0125.json").then((data) =>
+        data.json()
+      );
+      const store = await ccm.store({
+        name: "dbs-praktomat-results",
+        url: "https://ccm2.inf.h-brs.de",
+        user: user,
+      }); // Wenn Daten, dann dbs-...
+      await store
+        .get({})
+        .then((data) =>
+          Promise.all(data.map((dataset) => store.del(dataset.key)))
+        );
+      await Promise.all(
+        json.map((dataset) => {
+          dataset.key = dataset.id;
+          delete dataset.id;
+          dataset._ = {
+            access: { get: "all", set: "creator", del: "creator" },
+          };
+          return store.set(dataset);
+        })
+      );
+      console.log(await store.get({}));
+    })();
+  </script>
+</body>

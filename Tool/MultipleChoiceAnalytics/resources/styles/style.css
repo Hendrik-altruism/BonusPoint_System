@@ -1,0 +1,190 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap");
+
+:root {
+  --primary-color: #0dcaf0;
+  --secondary-color: #0fa7c5;
+  --crit1-color: rgba(196, 199, 52, 0.562);
+  --crit2-color: rgba(60, 199, 60, 0.562);
+  --hover-color: rgba(15, 167, 197, 0.1);
+}
+
+body {
+  height: 100%;
+  font-family: "Inter", sans-serif;
+}
+
+.content-wrapper {
+  display: flex;
+  gap: 1em;
+  flex-direction: column;
+  padding: 1em;
+}
+
+#list-students {
+  width: 100%;
+}
+
+#table-students {
+  border-collapse: collapse;
+}
+
+#table-students thead tr {
+  background-color: var(--primary-color);
+}
+
+#table-head {
+  background-color: var(--primary-color);
+}
+
+.own-element {
+  border: 2px solid red;
+}
+
+.own-element:hover {
+  cursor: pointer;
+  --bs-table-bg: var(--hover-color);
+}
+
+.list-group {
+  width: 100%;
+}
+
+.item-left {
+  width: 10em;
+}
+
+.item-right {
+  width: 100%;
+  text-align: end;
+}
+
+.nav-Bar {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.score {
+  color: white !important;
+}
+
+.score:hover {
+  color: white;
+  background-color: var(--secondary-color);
+}
+
+.modal {
+  --bs-modal-width: 1000px;
+}
+
+.crit-one {
+  --bs-table-bg: var(--crit1-color);
+}
+
+.crit-two {
+  --bs-table-bg: var(--crit2-color) !important;
+}
+
+.close-svg {
+  width: 1.5em;
+}
+
+.clickable:hover {
+  cursor: pointer;
+  scale: 1.1;
+}
+
+.modal-footer {
+  justify-content: flex-start;
+}
+
+.alert {
+  color: #ff0000;
+  font-weight: bold;
+}
+
+.filter-button {
+  width: 1.5em;
+  margin-left: 0.4em;
+}
+
+/* Spinner Style */
+
+.spinner-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Loading Style */
+
+.loading-container {
+  height: 1.1em;
+  width: 15em;
+  border: var(--secondary-color) solid 1px;
+  align-items: start;
+}
+
+.loading-object {
+  background-color: var(--secondary-color);
+  height: 100%;
+  width: 0%;
+}
+
+/* Legende Items */
+
+.legende {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.legende-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 0.7em;
+}
+
+.legende-box {
+  width: 1.5em;
+  height: 1.5em;
+}
+
+#own-legend {
+  border: 2px solid red;
+}
+
+#crit1-legend {
+  background-color: var(--crit1-color);
+}
+
+#crit2-legend {
+  background-color: var(--crit2-color);
+}
+
+/* Highcharts Style */
+
+.highcharts-data-table tr:hover {
+  background: #f1f7ff;
+}
+
+.highcharts-column-series {
+  cursor: pointer;
+}
+
+/* Media Queries for Responsive Design */
+
+@media only screen and (max-width: 850px) {
+  .legende {
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .nav-Bar {
+    flex-direction: column;
+  }
+}

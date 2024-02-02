@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<script src="https://ccmjs.github.io/ccm/ccm.js"></script>
+<body>
+  <div id="user"></div>
+</body>
+<script>
+  ( async () => {
+    const user = await ccm.start( 'https://ccmjs.github.io/akless-components/user/ccm.user.js', {
+      realm: 'cloud',
+      "store": "dms-user",
+      "url": "https://ccm2.inf.h-brs.de",
+      "title": "Please enter Username and Password",
+      "hash": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/modules/md5.mjs", "type": "module" } ],
+      root: document.body.querySelector( '#user' ),
+      logged_in: true
+    } );
+    const store = await ccm.store( { url: 'https://ccm2.inf.h-brs.de', name: 'dms-configs', user } );
+    const configs = await store.get( { '_.creator': 'knolle' } );
+    console.log(configs);
+    for (let i = 0; i < configs.length; i++) {
+      if (!configs[i].onfinish) continue;
+      configs[i].onfinish.store.permissions.access.get = 'realm';
+      console.log(configs[i]);
+      await store.set(configs[i]);
+    }
+  } )();
+</script>

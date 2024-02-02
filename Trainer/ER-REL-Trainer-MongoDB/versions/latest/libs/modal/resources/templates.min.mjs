@@ -1,0 +1,2 @@
+export const main=`\n  <div id="modal">\n    <div id="backdrop"></div>\n    <div id="dialog" class="show">\n      <div id="content">\n        <header>\n          <h5 id="title">%%</h5>\n          <button type="button" id="close" data-close>\n            <span>×</span>\n          </button>\n        </header>\n        <main></main>\n        <footer></footer>\n      </div>\n    </div>\n  </div>\n`;
+//# sourceMappingURL=templates.min.mjs.map
